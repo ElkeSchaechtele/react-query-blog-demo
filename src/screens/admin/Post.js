@@ -4,7 +4,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 //
 
 import usePost from '../../hooks/usePost'
-import useSavePost from '../../hooks/useSavePost'
+import useUpdatePost from '../../hooks/useUpdatePost'
 import useDeletePost from '../../hooks/useDeletePost'
 
 import PostForm from '../../components/PostForm'
@@ -15,11 +15,11 @@ export default function Post() {
   const navigate = useNavigate()
 
   const postQuery = usePost(postId)
-  const [savePost, savePostInfo] = useSavePost()
+  const [updatePost, updatePostInfo] = useUpdatePost()
   const [deletePost, deletePostInfo] = useDeletePost()
 
   const onSubmit = async (values) => {
-    await savePost(values)
+    await updatePost(values)
     postQuery.fetch()
   }
 
@@ -44,11 +44,11 @@ export default function Post() {
             initialValues={postQuery.data}
             onSubmit={onSubmit}
             submitText={
-              savePostInfo.isLoading
+              updatePostInfo.isLoading
                 ? 'Saving...'
-                : savePostInfo.isError
+                : updatePostInfo.isError
                 ? 'Error!'
-                : savePostInfo.isSuccess
+                : updatePostInfo.isSuccess
                 ? 'Saved!'
                 : 'Save Post'
             }

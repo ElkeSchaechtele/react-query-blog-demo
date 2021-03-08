@@ -1,16 +1,15 @@
 import React from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
-//
 import { Wrapper, Main } from './components/styled'
-
 import Sidebar from './components/Sidebar'
-import Admin from './screens/admin'
-import AdminPost from './screens/admin/Post'
-import Blog from './screens/blog'
-import BlogPost from './screens/blog/Post'
+
+import Admin from './screens/admin/Admin'
+import AdminPost from './screens/admin/AdminPost'
+import Blog from './screens/blog/Blog'
+import BlogPost from './screens/blog/BlogPost'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 function SafeHydrate({ children }) {
   return (
@@ -22,16 +21,19 @@ function SafeHydrate({ children }) {
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: {},
+    queries: {
+      staleTime: 0,
+    },
   },
 })
 
 export default function App() {
   return (
-    <SafeHydrate>
-      <BrowserRouter>
-        <Wrapper>
-          <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+
+      <SafeHydrate>
+        <BrowserRouter>
+          <Wrapper>
             <Sidebar />
             <Main>
               <Routes>
@@ -49,10 +51,13 @@ export default function App() {
                 <Route path="/blog/:postId" element={<BlogPost />} />
               </Routes>
             </Main>
-            <ReactQueryDevtools />
-          </QueryClientProvider>
-        </Wrapper>
-      </BrowserRouter>
-    </SafeHydrate>
+          </Wrapper>
+        </BrowserRouter>
+      </SafeHydrate>
+
+      <ReactQueryDevtools initialIsOpen={true}/>
+
+    </QueryClientProvider>
+
   )
 }

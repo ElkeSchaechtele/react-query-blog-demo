@@ -1,12 +1,10 @@
-import React from 'react'
+import { useCallback, useState } from 'react'
 import axios from 'axios'
 
 export default function useDeletePost() {
-  const [state, setState] = React.useReducer((_, action) => action, {
-    isIdle: true,
-  })
+  const [state, setState] = useState( { isIdle: true })
 
-  const mutate = React.useCallback(async (postId) => {
+  const mutate = useCallback(async (postId) => {
     setState({ isLoading: true })
     try {
       await axios.delete(`/api/posts/${postId}`).then((res) => res.data)

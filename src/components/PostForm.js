@@ -41,7 +41,7 @@ export default function PostForm({
         />
       </div>
       <br />
-      <label htmlFor="body">body</label>
+      <label htmlFor="body">Text</label>
       <div>
         <textarea
           type="text"

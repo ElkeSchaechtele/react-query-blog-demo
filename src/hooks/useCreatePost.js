@@ -1,13 +1,13 @@
-import React from 'react'
+import { useCallback, useState } from 'react'
 import axios from 'axios'
 
 const createPost = (values) =>
   axios.post('/api/posts', values).then((res) => res.data)
 
 export default function useCreatePost() {
-  const [state, setState] = React.useState({ isIdle: true })
+  const [state, setState] = useState({ isIdle: true })
 
-  const mutate = React.useCallback(async (values) => {
+  const mutate = useCallback(async (values) => {
     setState({ isLoading: true })
     try {
       const data = await createPost(values)

@@ -1,11 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-
-//
-
 import usePost from '../../hooks/usePost'
 
-export default function Post() {
+export default function BlogPost() {
   const { postId } = useParams()
   const postQuery = usePost(postId)
 

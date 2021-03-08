@@ -1,16 +1,12 @@
 import React from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
-
-//
-
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
-import useUpdatePost from '../../hooks/useUpdatePost'
 import useDeletePost from '../../hooks/useDeletePost'
-
 import PostForm from '../../components/PostForm'
 import { Loader } from '../../components/styled'
+import useUpdatePost from '../../hooks/useUpdatePost'
 
-export default function Post() {
+export default function AdminPost() {
   const { postId } = useParams()
   const navigate = useNavigate()
 
@@ -20,7 +16,7 @@ export default function Post() {
 
   const onSubmit = async (values) => {
     await updatePost(values)
-    postQuery.fetch()
+    postQuery.refetch()
   }
 
   const onDelete = async () => {

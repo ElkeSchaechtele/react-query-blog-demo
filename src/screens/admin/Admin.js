@@ -1,19 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
 import PostForm from '../../components/PostForm'
 import { Loader } from '../../components/styled'
-
 import usePosts from '../../hooks/usePosts'
 import useCreatePost from '../../hooks/useCreatePost'
+import { Link } from 'react-router-dom'
 
-export default function Posts() {
+export default function Admin() {
   const postsQuery = usePosts()
   const [createPost, createPostInfo] = useCreatePost()
 
   const onSubmit = async (values) => {
     await createPost(values)
-    postsQuery.fetch()
+    postsQuery.refetch()
   }
 
   return (
@@ -52,8 +50,8 @@ export default function Posts() {
                 : createPostInfo.isError
                 ? 'Error!'
                 : createPostInfo.isSuccess
-                ? 'Saved!'
-                : 'Create Post'
+                  ? 'Saved!'
+                  : 'Create Post'
             }
           />
         </div>

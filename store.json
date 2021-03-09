@@ -29,6 +29,12 @@
       "id": 5,
       "title": "Does React Query replace Redux, MobX or other global state managers?",
       "body": "The short answer is that React Query replaces the boilerplate code and related wiring used to manage cache data in your client-state and replaces it with just a few lines of code.\n...\n\nRead more here: https://react-query.tanstack.com/guides/does-this-replace-client-state"
+    },
+    {
+      "userId": 1,
+      "id": 6,
+      "title": "Application State Management with React",
+      "body": "Managing state is arguably the hardest part of any application. It's why there are so many state management libraries available and more coming around every day.\n...\n\nRead more here: https://kentcdodds.com/blog/application-state-management-with-react"
     }
   ]
 }

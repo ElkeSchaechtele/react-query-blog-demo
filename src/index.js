@@ -50,7 +50,7 @@ export default function App() {
                 <Route path="/blog/:postId" element={<BlogPost />} />
               </Routes>
             </Main>
-            <ReactQueryDevtools />
+            <ReactQueryDevtools initialIsOpen={false}/>
           </QueryClientProvider>
         </Wrapper>
       </BrowserRouter>

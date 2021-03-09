@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-const fetchPosts = () => {
+const fetchPosts = async () => {
   return axios.get('/api/posts').then((res) => res.data)
 }
 
